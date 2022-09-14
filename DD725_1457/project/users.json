@@ -1,0 +1,32 @@
+[
+  {
+    "id": 201912023,
+    "name": "김관식",
+    "grade": 2,
+    "season": 1,
+    "sumScore": 56,
+    "avgScore": 4.3,
+    "endDay": "2022-06-21",
+    "class": "학생"
+  },
+  {
+    "id": 1,
+    "name": "오민하",
+    "grade": 4,
+    "season": 1,
+    "sumScore": 112,
+    "avgScore": 4.5,
+    "endDay": "2022-06-21",
+    "class": "학생"
+  },
+  {
+    "id": 2,
+    "name": "한관희",
+    "grade": 2,
+    "season": 1,
+    "sumScore": 54,
+    "avgScore": 4.5,
+    "endDay": "2022-06-21",
+    "class": "학생"
+  }
+]

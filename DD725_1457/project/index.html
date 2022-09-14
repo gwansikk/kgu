@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>종합정보서비스(KUTIS 2.0)</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="default.css" />
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="useAPI.js"></script>
+
+    <!-- USE -->
+    <script>
+      useAPI("users.json", 1); // 인적 정보
+      useAPI("schedule.json", 2); // 학사 일정
+    </script>
+
+    <!-- 리마인더, 시간표 -->
+    <script>
+      REMIND_CNT = 0;
+
+      $(function () {
+        $("input#inputlg").keypress(function (e) {
+          var tsaskInput = $("input#inputlg").val();
+
+          // 리스트에 추가
+          if (e.keyCode == 13 && tsaskInput != "" && REMIND_CNT < 10) {
+            $("div#TaskList").append('<label id="todolist-item" class="list-group-item d-flex gap-3 animate__animated animate__bounceIn">' + '<span class="pt-1 form-checked-content">' + tsaskInput);
+
+            // 리마인더바 수정
+            REMIND_CNT++;
+            var reminder = document.querySelector("#reminder-progress");
+            reminder.setAttribute("style", "width: " + REMIND_CNT * 10 + "%");
+
+            $("input#inputlg").val("");
+          }
+        });
+
+        $(document).on("click", "#todolist-item", function () {
+          REMIND_CNT--;
+          var reminder = document.querySelector("#reminder-progress");
+          reminder.setAttribute("style", "width: " + REMIND_CNT * 10 + "%");
+
+          $(this).remove();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- 헤더: 정보 -->
+    <header class="container animate__animated animate__fadeInDown">
+      <div class="col">
+        <div class="shadow-lg p-3 mb-5 bg-body rounded-custom">
+          <img src="kug_logo_kutis.png" alt="KGU" class="logo m-2" />
+          <h4 class="title">컴퓨터공학부 - 소프트웨어경영대학</h4>
+          <h5>김관식 (201912023)</h5>
+          <table class="table text-center" style="font-size: small">
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>학년</th>
+                <th>학기</th>
+                <th>취득 학점</th>
+                <th>평균 학점</th>
+                <th>종강</th>
+              </tr>
+            </thead>
+            <tr id="InfoAPI"></tr>
+          </table>
+        </div>
+      </div>
+    </header>
+
+    <!-- 내용: 학사일정, 시간표, 활동, 리마인더 -->
+    <div class="container animate__animated animate__fadeInDown scrollme">
+      <!-- 학사 일정 파트-->
+      <article class="row">
+        <div class="col">
+          <p style="font-size: x-small; color: gray; float: right; margin: 14px">UPTIME 22.05.26.</p>
+          <div class="shadow-lg p-3 mb-5 bg-body rounded-custom">
+            <h3>학사일정</h3>
+            <table class="table text-left">
+              <thead>
+                <th style="width: 50%">제목</th>
+                <th>작성일</th>
+                <th>조회</th>
+              </thead>
+              <tbody id="scheduleAPI"></tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- 통계-시간표, 리마인더 파트 -->
+      <article class="row">
+        <div class="col" style="float: left">
+          <!-- 통계 파트-->
+          <div class="shadow-lg p-3 mb-5 bg-body rounded-custom h-auto">
+            <h3>통계</h3>
+            <label for="">활동</label>
+            <div class="progress m-2">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
+            </div>
+            <label for="">리마인더</label>
+            <div class="progress m-2">
+              <div id="reminder-progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 00%"></div>
+            </div>
+          </div>
+          <!-- 시간표 파트 -->
+          <div class="shadow-lg p-3 mb-5 bg-body rounded-custom">
+            <table class="table table-bordered table-hover text-center">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>월</th>
+                  <th>화</th>
+                  <th>수</th>
+                  <th>목</th>
+                  <th>금</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="titme-09">
+                  <td>09</td>
+                  <td></td>
+                  <td></td>
+                  <td rowspan="3" style="background-color: cornflowerblue">자료구조론</td>
+                  <td></td>
+                  <td rowspan="3" style="background-color: slategray">프로그래밍기초</td>
+                </tr>
+                <tr id="titme-10">
+                  <td>10</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr id="titme-11">
+                  <td>11</td>
+                  <td rowspan="2" style="background-color: papayawhip">공감소통</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr id="titme-12">
+                  <td>12</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr id="titme-13">
+                  <td>13</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr id="titme-14">
+                  <td>14</td>
+                  <td rowspan="3" style="background-color: darkseagreen">웹프로그래밍</td>
+                  <td rowspan="3" style="background-color: coral">이산수학</td>
+                  <td rowspan="3" style="background-color: yellowgreen">컴퓨터구조</td>
+                  <td></td>
+                  <td rowspan="3" style="background-color: thistle">자바프로그래밍</td>
+                </tr>
+                <tr id="titme-15">
+                  <td>15</td>
+                </tr>
+                <tr id="titme-16">
+                  <td>16</td>
+                </tr>
+                <tr id="titme-17">
+                  <td>17</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr id="titme-18">
+                  <td>18</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 활동 달력, 리마인더-->
+        <aside class="col-lg-5" style="float: right">
+          <!-- 달력 -->
+          <div class="shadow-lg p-3 mb-5 bg-body rounded-custom">
+            <div class="calendar">
+              <h3>6월, 2022</h3>
+              <div class=""></div>
+              <div class=""></div>
+              <div class=""></div>
+              <div class="commit1"></div>
+              <div class="commit1"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class="commit"></div>
+              <div class=""></div>
+              <div class=""></div>
+            </div>
+          </div>
+
+          <!-- 리마인더 -->
+          <div class="shadow-lg p-3 mb-5 bg-body rounded-custom">
+            <h3>리마인더</h3>
+            <div class="list-group" id="TaskList">
+              <input type="text" class="list-group-item d-flex gap-3 bg-light" id="inputlg" placeholder="오늘 당신이 해야 할 일은 무엇인가요?" />
+            </div>
+          </div>
+        </aside>
+      </article>
+    </div>
+
+    <!-- Footer: 사이트맵, 기타 정보 -->
+    <footer class="container animate__animated animate__fadeInDown scrollme">
+      <!-- 바로가기 -->
+      <div class="row text-center">
+        <div class="col">
+          <div class="shadow-lg p-3 mb-5 bg-body rounded-custom">
+            <h4 class="text-left m-2">바로가기</h4>
+            <div class="row row-cols-1 row-cols-lg-5 g-2">
+              <a class="col card-set" href="http://www.kyonggi.ac.kr">
+                <div class="card rounded-custom h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">경기대학교</h5>
+                    <p class="card-text">공식 홈페이지</p>
+                  </div>
+                </div>
+              </a>
+              <a class="col card-set" href="http://cs.kyonggi.ac.kr:8080/webp/Index">
+                <div class="card rounded-custom h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">컴퓨터공학부</h5>
+                    <p class="card-text">학부 공식 홈페이지</p>
+                  </div>
+                </div>
+              </a>
+              <a class="col card-set" href="http://kutis.kyonggi.ac.kr/webkutis/view/indexWeb.jsp">
+                <div class="card rounded-custom">
+                  <div class="card-body">
+                    <h5 class="card-title">KUTIS</h5>
+                    <p class="card-text">학교 종합정보 서비스</p>
+                  </div>
+                </div>
+              </a>
+              <a class="col card-set" href="https://lms.kyonggi.ac.kr">
+                <div class="card rounded-custom">
+                  <div class="card-body">
+                    <h5 class="card-title">LMS</h5>
+                    <p class="card-text">수강 강의에 대한 정보 서비스</p>
+                  </div>
+                </div>
+              </a>
+              <a class="col card-set" href="http://sugang.kyonggi.ac.kr/">
+                <div class="card rounded-custom">
+                  <div class="card-body">
+                    <h5 class="card-title">수강신청</h5>
+                    <p class="card-text">경기대학교 수강신청 시스템</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 사이트 기타 정보 -->
+      <div class="row">
+        <div class="col">
+          <div class="shadow-lg p-3 mb-5 bg-body rounded-custom">
+            <span>경기대학교 컴퓨터공학부 201912023 김관식, 웹프로그래밍 월678.</span><br />
+            <span>Email: seorit@icloud.com</span><br />
+            <span>Copyright © 2022. 201912023 김관식, All Rights Reserved.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

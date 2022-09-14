@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH04</title>
+</head>
+<body>
+    <div>
+        <h2>로그인 폼</h2>
+        <hr>
+        <fieldset>
+            <legend>Login</legend>
+            <td><label for="username">Username</label></td>
+            <td><input type="text"></td>
+            <td><label for="password">Password</label></td>
+            <td><input type="password"></td>
+        </fieldset>
+    </div>
+    <br>
+    <div>
+        <h2>도형 서식 폼 만들기</h2>
+        <hr>
+        <fieldset>
+            <legend>도형 서식 입력</legend>
+            
+            <tr>
+                <td>선종류</td>
+                <td>
+                    <select multiple="multiple" size="3">
+                        <option>선없음</option>
+                        <option>실선</option>
+                        <option>점선</option>
+                    </select>
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <label>선두께 <input type="number" min="1" max="50" 
+                    step="1"></label>
+                    <label>선색 <input type="color" 
+                    value="#00bfff"></label><br><br>
+                    <label>투명도(0~100) : <input type="range" 
+                    list="transparency" min="0" max="100">
+                    <datalist id="transparency">
+                    <option value="0" label="투명">
+                    <option value="50" label="중간">
+                    <option value="100" label="불투명">
+                    </datalist>
+            </tr>
+        </fieldset>
+        <hr>
+    </div>
+    <br>
+    <div>
+        <h2>버튼을 만들자</h2>
+        <hr>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <br>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <br>
+        <button>7</button>
+        <button>8</button>
+        <button>0</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            background: red;
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            height: 50px;
+            z-index: 100;
+        }
+
+        #containerOrange {
+            width: 150px;
+            height: 100px;
+            background: orange;
+
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            margin-left: -75px;
+            margin-top: -80px;
+            z-index: 10;
+        }
+
+        body {
+            width: 500px;
+            margin: 0px auto;
+            margin-top: 50px;
+        }
+
+        #middle { 
+            overflow: hidden; 
+        }
+
+        #left {
+            float: left; 
+            width: 150px; 
+            background: red; 
+        }
+
+        #right { 
+            float: right; 
+            width: 350px; 
+            background: blue; 
+        }
+
+        #top {
+            background: green; 
+        }
+
+        #bottom { 
+            background: purple; 
+        }
+
+        #container {
+            width: 344px;
+            height: 300px;
+            border: 3px solid black;
+            overflow: hidden;
+            background-color: white;
+            position: relative;
+        }
+
+        .circle {
+            position: absolute;
+            border: 3px solid;
+            width: 100px;
+            height: 100px;
+            border-radius: 50% 50%;
+        }
+
+        .ellipsis {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #red {
+            background: red;
+            left:  20px;
+            top: 20px;
+        }
+
+        #green {
+            background: green;
+            right:  20px;
+            top: 20px;
+        }
+
+        #yellow {
+            background: yellow;
+            left:  20px;
+            bottom: 20px;
+        }
+
+        #blue {
+            background: red;
+            right:  20px;
+            bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar"></div>
+    <div id = "top">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, possimus incidunt numquam, tempore amet at aspernatur dolore magni expedita alias quisquam porro! Voluptates quod unde facilis, eligendi deleniti inventore sequi!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae eveniet magni explicabo,
+        <div id="containerOrange">
+            <h1 class="ellipsis" >요소의 중앙배치</h1>
+        </div>
+        corporis nisi tenetur dignissimos nulla sit nihil cupiditate quasi temporibus aut facilis optio delectus, praesentium fuga. Excepturi, eos.
+    </div>
+    <div id = "middle">
+        <div id = "left">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus, iste voluptatibus! Ab ipsum earum officia minus atque hic officiis laudantium eos nihil, perspiciatis quisquam, veritatis tenetur! Ipsa id accusamus t amet consectetur adipisicing elit. Necessitatibus quod dicta illo dolor veniam veritatis officia commodi laudantium suscipit, quos accusamus maiores distinctio, debitis sunt, et a quidem </div>
+        <div id = "right">
+            ipsum dolor sit amet, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae aperiam placeat optio expedita, ullam eius, molestias itaque delectus, quas repudiandae autem libero
+            <div id="container">
+                <div class="circle" id="red"></div>
+                <div class="circle" id="green"></div>
+                <div class="circle" id="yellow"></div>
+                <div class="circle" id="blue"></div>
+            </div>
+            consectetur adipisicing elit. Recusandae eveniet magni explicabo, corporis nisi
+        </div>
+    </div>
+    <div id="bottom">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel vero sed quibusdam sint non perferendis! Ipsam necessitatibus reprehenderit ut dolore corrupti! Rerum vero maiores, ullam mollitia cupiditate placeat reprehenderit quis.</div>
+</body>
+</html>
