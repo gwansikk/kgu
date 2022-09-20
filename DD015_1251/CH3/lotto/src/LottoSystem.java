@@ -5,47 +5,50 @@ import java.util.Arrays;
 public class LottoSystem {
     Scanner scanner = new Scanner(System.in);
     ArrayList<Customer> customerList = new ArrayList<Customer>();
-    int[] gameNumber = new int[6];
+    int[] gameNum = new int[6];
 
     void run() {
         readAll();
+        gameStart();
+        printAll();
     }
 
     void readAll() {
         while (true) {
             String name = scanner.next();
 
-            // 0 입력 받으면 입력 종료
-            if (name.equals("0")) {
-                gameStart();
-                printAll();
+            // 0이 입력되면 입력 종료
+            if (name.equals("0"))
                 return;
-            }
 
             String phone = scanner.next();
 
-            Customer customer = new Customer(name, phone);
-            customerList.add(customer);
+            // 리스트에 추가
+            customerList.add(new Customer(name, phone));
         }
     }
 
     void printAll() {
         for (Customer customer : customerList) {
-            int checkNum = 0;
+            int checkNum = 0; // 당첨 숫자 카운트
 
+            // 전화번호, 게임 숫자 출력
             customer.print();
 
-            for (int i = 0; i < gameNumber.length; i++) {
-                int key = gameNumber[i];
+            // 당첨된 숫자 확인
+            for (int i = 0; i < gameNum.length; i++) {
+                int key = gameNum[i];
 
-                Arrays.sort(customer.number);
-                if (Arrays.binarySearch(customer.number, key) >= 0) {
+                Arrays.sort(customer.gmaeNum);
+                if (Arrays.binarySearch(customer.gmaeNum, key) >= 0) {
                     checkNum++;
                 }
             }
 
+            // 당첨 숫자 출력
             System.out.print("==> (" + checkNum + "개) ");
 
+            // 등수 출력
             switch (checkNum) {
                 case 3:
                     System.out.println("5등");
@@ -69,14 +72,13 @@ public class LottoSystem {
 
     void gameStart() {
         for (int i = 0; i < 6; i++) {
-            gameNumber[i] = (int) (Math.random() * 44 + 1);
+            gameNum[i] = (int) (Math.random() * 44 + 1);
         }
 
         System.out.print("추첨번호 [");
 
-        for (int number : gameNumber) {
-            System.out.print(" " + number);
-        }
+        for (int numList : gameNum)
+            System.out.print(" " + numList);
 
         System.out.println("]");
     }
@@ -84,49 +86,5 @@ public class LottoSystem {
     public static void main(String[] args) throws Exception {
         LottoSystem lottoSystem = new LottoSystem();
         lottoSystem.run();
-    }
-}
-
-/**
- * 손님의 객체가 생긴다는 것은 복권을 구매했다는 것과 같다.
- * 따라서 객체가 생기는 순간 랜덤으로 숫자가 지정된다.
- */
-class Customer {
-    Scanner scanner = new Scanner(System.in);
-
-    String name;
-    String phone;
-    int[] number = new int[6];
-
-    public Customer() {
-        read(scanner);
-        random();
-    }
-
-    public Customer(String name, String phone) {
-        this.name = name;
-        this.phone = phone;
-        random();
-    }
-
-    void read(Scanner scanner) {
-        name = scanner.next();
-        phone = scanner.next();
-    }
-
-    void print() {
-        System.out.print(phone + " [");
-
-        for (int i : number) {
-            System.out.printf(" %2d", i);
-        }
-
-        System.out.print("] ");
-    }
-
-    void random() {
-        for (int i = 0; i < 6; i++) {
-            number[i] = (int) (Math.random() * 44 + 1);
-        }
     }
 }
