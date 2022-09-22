@@ -89,9 +89,9 @@ class Polynomial {
         for (int i = 0; i < terms.size(); i++) {
             terms.get(i).print();
 
-            if (i != terms.size() - 1) {
+            if (i != terms.size() - 1)
                 System.out.print(" + ");
-            }
+
         }
 
         System.out.println("");
@@ -100,9 +100,8 @@ class Polynomial {
     int calc(int x) {
         int result = 0;
 
-        for (Term term : terms) {
+        for (Term term : terms)
             result += (int) Math.pow(x, term.expo) * term.coef;
-        }
 
         System.out.printf("f(%d) = %d\n", x, result);
 
@@ -158,7 +157,6 @@ class Polynomial {
         }
 
         void print() {
-
             if (expo == 0)
                 System.out.printf("%d", coef);
             else
