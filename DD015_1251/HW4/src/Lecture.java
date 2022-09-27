@@ -24,8 +24,12 @@ class Lecture {
     }
 
     Boolean match(String key) {
-        if (code.equals(key))
+        if (name.equals(key))
             return true;
+
+        if (day.equals(key))
+            return true;
+
         return false;
     }
 }

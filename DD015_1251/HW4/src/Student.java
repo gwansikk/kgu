@@ -49,4 +49,12 @@ class Student {
         return false;
     }
 
+    Boolean matchDays(String kwd) {
+        for (Lecture registered : registeredList)
+            if (registered.match(kwd))
+                return true;
+
+        return false;
+    }
+
 }
