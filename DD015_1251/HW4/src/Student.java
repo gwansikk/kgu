@@ -4,8 +4,8 @@ import java.util.Scanner;
 class Student {
     String id;
     String name;
-    int grade;
     String phone;
+    String grade;
     ArrayList<Lecture> registeredList = new ArrayList<Lecture>();
 
     Student(String token) {
@@ -15,9 +15,8 @@ class Student {
     void read(Scanner scanner, Department department) {
         // id = scanner.next();
         name = scanner.next();
-        name = scanner.next();
         phone = scanner.next();
-        grade = scanner.nextInt();
+        grade = scanner.next();
 
         String code;
         Lecture lecture = null;
@@ -25,9 +24,8 @@ class Student {
         while (true) {
             code = scanner.next();
 
-            if (code.equals("0")) {
+            if (code.equals("0"))
                 break;
-            }
 
             lecture = department.findLecture(code);
             registeredList.add(lecture);
@@ -35,7 +33,7 @@ class Student {
     }
 
     void print() {
-        System.out.printf("%d %s %s (%d학년)\n", id, name, phone, grade);
+        System.out.printf("%s %s %s (%s학년)\n", id, name, phone, grade);
 
         for (Lecture lecture : registeredList) {
             System.out.printf("\t");
@@ -43,8 +41,12 @@ class Student {
         }
     }
 
-    void match() {
+    boolean containsLecture(Lecture lecture) {
+        for (Lecture registered : registeredList)
+            if (registered.code.equals(lecture.code))
+                return true;
 
+        return false;
     }
 
 }

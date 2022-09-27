@@ -10,7 +10,7 @@ public class Department {
         readAllLectures();
         readAllStudent();
 
-        printAllLectures();
+        printAllStudent();
     }
 
     public static void main(String[] args) {
@@ -63,7 +63,34 @@ public class Department {
     }
 
     Lecture findLecture(String token) {
+        for (Lecture lecture : lectureList)
+            if (lecture.code.equals(token))
+                return lecture;
 
         return null;
+    }
+
+    void searchStudentsByLecture() {
+        String kwd;
+
+        System.out.print("검색할 과목: ");
+        kwd = scanner.next();
+        Lecture lecture = null;
+
+        for (Lecture lec : lectureList)
+            if (lec.match(kwd))
+                lecture = lec;
+
+        if (lecture == null) {
+            System.out.println("없는 과목명입니다.");
+            return;
+        }
+
+        lecture.print();
+
+        for (Student student : studentList) {
+            if (student.containsLecture(lecture))
+                student.print();
+        }
     }
 }
