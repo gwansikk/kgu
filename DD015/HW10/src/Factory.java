@@ -1,4 +1,3 @@
-public interface Factory {
-	Manageable create();
+public interface Factory<T> {
+	T create();
 }
-

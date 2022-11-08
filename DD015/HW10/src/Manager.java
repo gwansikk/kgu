@@ -3,18 +3,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Manager {
-	public ArrayList<Manageable> mList = new ArrayList<>();
+public class Manager<T extends Manageable> {
+	public ArrayList<T> mList = new ArrayList<>();
 
-	public void readAll(String filename, Factory fac) {
-		Scanner filein = openFile(filename);
-		Manageable m = null;
-		while (filein.hasNext()) {
-			m = fac.create();
-			m.read(filein);
-			mList.add(m);
+	public void readAll(String filename, Factory<T> fac) {
+		Scanner file = openFile(filename);
+
+		while (file.hasNext()) {
+			T t = fac.create();
+			t.read(file);
+			mList.add(t);
 		}
-		filein.close();
+		file.close();
 	}
 
 	public void printAll() {
@@ -23,8 +23,8 @@ public class Manager {
 		}
 	}
 
-	public Manageable find(String kwd) {
-		for (Manageable m : mList)
+	public T find(String kwd) {
+		for (T m : mList)
 			if (m.matches(kwd))
 				return m;
 		return null;
@@ -53,13 +53,13 @@ public class Manager {
 	}
 
 	public Scanner openFile(String filename) {
-		Scanner filein = null;
+		Scanner file = null;
 		try {
-			filein = new Scanner(new File(filename));
+			file = new Scanner(new File(filename));
 		} catch (Exception e) {
 			System.out.println(filename + ": 파일 없음");
 			System.exit(0);
 		}
-		return filein;
+		return file;
 	}
 }

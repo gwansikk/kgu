@@ -5,6 +5,10 @@ public class Item implements Manageable {
 	String name;
 	private int price;
 
+	public int getPrice() {
+		return price;
+	}
+
 	// F3286 델리투명자 1140
 	@Override
 	public void read(Scanner scan) {

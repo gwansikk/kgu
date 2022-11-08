@@ -27,9 +27,13 @@ public class User implements Manageable {
 		point += order.point;
 	}
 
+	boolean login(String id, String pwd) {
+		return id.equals(userId) && this.pwd.equals(pwd);
+	}
+
 	@Override
 	public void print() {
-		System.out.printf("[%s] (%d¡°)\n", userId, point);
+		System.out.printf("[%s] (%d점)\n", userId, point);
 		for (Order od : myOrderList)
 			od.print(false);
 	}
