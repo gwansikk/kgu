@@ -46,10 +46,9 @@ WHERE no IN (
     GROUP BY lectureNo
 );
 
-
 /* 3-7 */
 SELECT id, COUNT(*) AS cnt
 FROM course c, student s
 WHERE c.studentId = s.id AND grade = 2
 GROUP BY id
-HAVING COUNT(id)>=2
+HAVING COUNT(id)>=2;

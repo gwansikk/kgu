@@ -14,7 +14,6 @@ public class BookStore {
 	}
 
 	private void printAllBooks() {
-		// TODO Auto-generated method stub
 		for (Manageable b : bookList)
 			b.print();
 	}
@@ -22,10 +21,12 @@ public class BookStore {
 	void readAllBooks() {
 		int n = 0;
 		Manageable b = null;
+
 		while (true) {
 			n = scan.nextInt();
 			if (n == 0)
 				break;
+
 			switch (n) {
 				case 1:
 					b = new Book();
@@ -53,7 +54,6 @@ public class BookStore {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		BookStore store = new BookStore();
 		store.run();
 	}

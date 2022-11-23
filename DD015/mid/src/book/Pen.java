@@ -9,7 +9,7 @@ public class Pen implements Manageable {
 
 	@Override
 	public void read(Scanner scan) {
-		// TODO Auto-generated method stub
+
 		itemName = scan.next();
 		mmThick = scan.nextFloat();
 		price = scan.nextInt();
@@ -17,17 +17,15 @@ public class Pen implements Manageable {
 
 	@Override
 	public void print() {
-		// TODO Auto-generated method stub
-		System.out.format("[Pen] %s %fmm %d원\n",
-				itemName, mmThick, price);
+		System.out.format("[Pen] %s %fmm %d원\n", itemName, mmThick, price);
 	}
 
 	@Override
 	public boolean matches(String kwd) {
-		// TODO Auto-generated method stub
-		if (kwd.contentEquals("Pen"))
+
+		if (kwd.contentEquals("Pen")) // 값의 String이 같는지
 			return true;
-		if (itemName.contains(kwd))
+		if (itemName.contains(kwd)) // 포함여부
 			return true;
 		if (("" + mmThick).contentEquals(kwd))
 			return true;

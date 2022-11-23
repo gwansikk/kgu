@@ -22,23 +22,25 @@ public class Student {
 		name = scan.next();
 		phone = scan.next();
 		year = scan.nextInt();
+
 		String token = null;
 		Subject s = null;
+
 		while (true) {
 			token = scan.next();
 			if (token.equals("0"))
 				break;
 			s = dept.findSubject(token);
 			registeredList.add(s);
-		}	
+		}
 	}
 
 	void print() { // Student
-		System.out.format("%d %s %s (%dÇÐ³â)", id, name, phone, year);
+		System.out.format("%d %s %s (%dï¿½Ð³ï¿½)", id, name, phone, year);
 		if (score != 0)
-			System.out.format(" %dÁ¡", score);
+			System.out.format(" %dï¿½ï¿½", score);
 		System.out.println();
-		for (Subject s: registeredList) {
+		for (Subject s : registeredList) {
 			System.out.print('\t');
 			s.print();
 		}
@@ -48,10 +50,9 @@ public class Student {
 		// System.out.printf("%s: ", name);
 		// score = scan.nextInt();
 		score = rand.nextInt(100) + 1;
-		System.out.printf("%s: %dÁ¡\n", name, score);
+		System.out.printf("%s: %dï¿½ï¿½\n", name, score);
 
 	}
-
 
 	boolean matches(String kwd) {
 		if (kwd.length() == 1 && Character.isDigit(kwd.charAt(0)))
@@ -65,8 +66,7 @@ public class Student {
 				kwd = kwd.substring(1);
 				if (matches(kwd))
 					return false;
-			}
-			else if (!matches(kwd))
+			} else if (!matches(kwd))
 				return false;
 		}
 		return true;

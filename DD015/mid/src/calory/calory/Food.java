@@ -30,8 +30,7 @@ public class Food implements Manageable {
 
 	@Override
 	public String toString() {
-		return String.format("[%2d] %s-%s (%dkcal/%s)",
-				id, type, name, cal, unit);
+		return String.format("[%2d] %s-%s (%dkcal/%s)", id, type, name, cal, unit);
 	}
 
 	int getKcal(int s, String u) {
@@ -39,8 +38,7 @@ public class Food implements Manageable {
 	}
 
 	String getDetail(int n, String unit) {
-		return String.format("%dkcal/%d%s",
-				cal, 1, this.unit);
+		return String.format("%dkcal/%d%s", cal, 1, this.unit);
 	}
 }
 
@@ -63,9 +61,9 @@ class DFood extends Food {
 
 	@Override
 	int getKcal(int s, String u) {
-		if (unit.equals(u))
+		if (unit.equals(u)) // 개 로 들어왔으면
 			return super.getKcal(s, u);
-		if (dunit.equals(u))
+		if (dunit.equals(u)) // 세부 단위로 들어왔으면
 			return cal * s / size;
 		return 0;
 	}
@@ -73,10 +71,9 @@ class DFood extends Food {
 	@Override
 	String getDetail(int n, String unit) {
 		String common = super.getDetail(n, unit);
+
 		if (dunit.equals(unit))
-			return common
-					+ String.format(" -> %dkcal*%d/%d%s=%dkcal",
-							cal, n, size, dunit, getKcal(n, unit));
+			return common + String.format(" -> %dkcal*%d/%d%s=%dkcal", cal, n, size, dunit, getKcal(n, unit));
 		return common;
 	}
 }

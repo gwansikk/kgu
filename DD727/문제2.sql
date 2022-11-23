@@ -13,10 +13,6 @@ VALUES (201811934, '키보드', 2);
 INSERT INTO student (id, name, grade)
 VALUES (201733441, '마우스', 2);
 
-
-SELECT * FROM student;
-
-
 INSERT INTO lecture (no, name)
 VALUES ('0663', '직무이해와자기개발');
 
@@ -47,7 +43,6 @@ VALUES (201912023, '1264', 2022);
 INSERT INTO course (studentId, lectureNo, year)
 VALUES (201912023, '1248', 2022);
 
-
 INSERT INTO course (studentId, lectureNo, year)
 VALUES (201811934, '1250', 2022);
 
@@ -61,3 +56,6 @@ INSERT INTO course (studentId, lectureNo, year)
 VALUES (202013004, '1248', 2019);
 
 
+SELECT * FROM student;
+SELECT * FROM lecture;
+SELECT * FROM course;

@@ -3,38 +3,31 @@ package lec;
 import java.util.Scanner;
 
 public class Subject {
-	// DD746 	Ã¢ÀÇ±âÃÊ¼³°è	1 ¿ù 123
+	// DD746 ì°½ì˜ê¸°ì´ˆì„¤ê³„ 1 ì›” 123
 	String code;
 	String title;
 	int year;
 	String date;
 	String time;
+
 	Subject(String code) {
 		this.code = code;
 	}
+
 	void read(Scanner scan) {
 		title = scan.next();
 		year = scan.nextInt();
 		date = scan.next();
 		time = scan.next();
 	}
+
 	void print() {
-		System.out.format("[%s] %s %dÇĞ³â %s%s\n", 
-				code, title, year, date, time);
+		System.out.format("[%s] %s %dí•™ë…„ %s%s\n", code, title, year, date, time);
 	}
+
 	boolean matches(String token) {
-		// TODO Auto-generated method stub
 		if (token.equals(code))
 			return true;
 		return false;
 	}
 }
-
-
-
-
-
-
-
-
-

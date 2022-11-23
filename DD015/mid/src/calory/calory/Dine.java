@@ -16,11 +16,11 @@ public class Dine {
 	Manager eatMgr = new Manager();
 
 	void mymain() {
-		foodMgr.readAll("food.txt", new Factory() {
+		foodMgr.readAll("../food.txt", new Factory() {
 			@Override
 			public Manageable create(Scanner scan) {
-				// TODO Auto-generated method stub
 				int type = scan.nextInt();
+
 				switch (type) {
 					case 1:
 						return new Food();
@@ -29,10 +29,13 @@ public class Dine {
 					default:
 						break;
 				}
+
 				return null;
 			}
 		});
+
 		foodMgr.printAll();
+
 		readEats();
 		printEats();
 	}
@@ -40,20 +43,18 @@ public class Dine {
 	void readEats() {
 		int day, month;
 		String eatType;
-		// Eat eat = null;
+		// * Eat eat = null;
 		day = eatMgr.scan.nextInt();
 		month = eatMgr.scan.nextInt();
 		eatType = eatMgr.scan.next();
-		eatMgr.readAll("eat.txt", new Factory() {
+		eatMgr.readAll("../eat.txt", new Factory() {
 			@Override
 			public Manageable create(Scanner scan) {
-				// TODO Auto-generated method stub
 				return new Eat();
 			}
 		});
 		// eatMgr.printAll();
-		System.out.printf("%d/%d %s ",
-				month, day, eatType);
+		System.out.printf("%d/%d %s ", month, day, eatType);
 	}
 
 	void printEats() {
@@ -61,8 +62,8 @@ public class Dine {
 		for (Manageable m : eatMgr.mList) {
 			totalCal += ((Eat) m).getKcal();
 		}
-		System.out.printf("��Į�θ�: %dkcal\n", totalCal);
-		;
+		System.out.printf("총칼로리: %dkcal\n", totalCal);
+
 		eatMgr.printAll();
 	}
 }

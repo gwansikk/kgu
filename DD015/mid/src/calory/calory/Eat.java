@@ -28,8 +28,7 @@ class Eat implements Manageable {
 
 	@Override
 	public String toString() {
-		return String.format("%s %d%s(%dkcal) - %s",
-				food.name, qnty, unit, kcal, food.getDetail(qnty, unit));
+		return String.format("%s %d%s(%dkcal) - %s", food.name, qnty, unit, kcal, food.getDetail(qnty, unit));
 	}
 
 	int getKcal() {

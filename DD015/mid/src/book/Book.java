@@ -19,10 +19,12 @@ class Book implements Manageable {
 		isbn = scan.next();
 		year = scan.nextInt();
 		String token = null;
+
 		while (true) {
 			token = scan.next();
 			if (token.contentEquals("0"))
 				break;
+
 			authors.add(token);
 		}
 		price = scan.nextInt();
@@ -31,8 +33,7 @@ class Book implements Manageable {
 	// 자료구조 (생능출판/1001/2003년) [15000원] 저자:천인국 공용해 하상호
 	@Override
 	public void print() {
-		System.out.format("%s (%s/%s/%d년) [%d원] 저자:",
-				title, pub, isbn, year, price);
+		System.out.format("%s (%s/%s/%d년) [%d원] 저자:", title, pub, isbn, year, price);
 		for (String a : authors)
 			System.out.print(a + " ");
 		System.out.println();

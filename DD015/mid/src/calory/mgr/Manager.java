@@ -9,17 +9,17 @@ public class Manager {
 	public ArrayList<Manageable> mList = new ArrayList<>();
 
 	public void printAll() {
-		// TODO Auto-generated method stub
 		for (Manageable b : mList)
 			b.print();
 	}
 
 	Scanner openFile(String filename) {
 		Scanner filein = null;
+
 		try {
 			filein = new Scanner(new File(filename));
 		} catch (Exception e) {
-			System.out.printf("���� ���� ����: %s\n", filename);
+			System.out.printf("파일 오픈 실패: %s\n", filename);
 			System.exit(0);
 		}
 		return filein;
@@ -28,11 +28,13 @@ public class Manager {
 	public void readAll(String filename, Factory fac) {
 		Scanner filein = openFile(filename);
 		Manageable b = null;
+
 		while (filein.hasNext()) {
 			b = fac.create(filein);
 			b.read(filein);
 			mList.add(b);
 		}
+
 		filein.close();
 	}
 
@@ -40,11 +42,13 @@ public class Manager {
 		for (Manageable b : mList)
 			if (b.matches(kwd))
 				return b;
+
 		return null;
 	}
 
 	public void search() {
 		String kwd = null;
+
 		while (true) {
 			System.out.print(">> ");
 			kwd = scan.next();
