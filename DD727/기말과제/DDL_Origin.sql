@@ -69,11 +69,9 @@ CREATE TABLE post (
     title VARCHAR2(50) NOT NULL,
     content VARCHAR2(1000) NOT NULL, -- 내용은 최대 1000자만
     created_date DATE NOT NULL,
+    writer VARCHAR2(50) NOT NULL, -- 작성자
 
-    student_id CHAR(9) NOT NULL , -- FK
-
-    CONSTRAINT PK_POST PRIMARY KEY (no),
-    CONSTRAINT FK_POST FOREIGN KEY (student_id) REFERENCES USERS(STUDENT_ID)
+    CONSTRAINT PK_POST PRIMARY KEY (no)
 );
 
 -- 댓글
