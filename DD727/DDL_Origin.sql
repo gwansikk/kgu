@@ -28,11 +28,12 @@ CREATE TABLE books (
 -- 활동그룹
 CREATE TABLE groups (
     no NUMBER(10) NOT NULL, -- 기본키, 자동증가
-    period DATE NOT NULL,
+    name VARCHAR2(50) NOT NULL,
+    period VARCHAR2(50) NOT NULL,
     place VARCHAR2(100),
-    day_cycle DATE NOT NULL ,
+    day_cycle VARCHAR2(50) NOT NULL ,
 
-    student_id CHAR(9), -- FK, 관리자
+    student_id CHAR(9) NOT NULL, -- FK, 관리자
 
     CONSTRAINT PK_GROUPS PRIMARY KEY (no),
     CONSTRAINT FK_GROUPS FOREIGN KEY (student_id) REFERENCES USERS(STUDENT_ID)
@@ -55,7 +56,7 @@ CREATE TABLE membership (
     purpose VARCHAR2(100) NOT NULL ,
     price NUMBER(8) NOT NULL, -- 1억 단위로 사용할 일이 없으니 천단위 까지
 
-    groups_no NUMBER(10),
+    groups_no NUMBER(10) NOT NULL ,
 
     CONSTRAINT PK_MEMBERSHIP PRIMARY KEY (no),
     CONSTRAINT FK_MEMBERSHIP FOREIGN KEY (groups_no) REFERENCES GROUPS(NO)
