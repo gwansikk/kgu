@@ -1,3 +1,5 @@
+package DD015.CH5.src;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

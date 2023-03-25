@@ -1,4 +1,5 @@
-package Project;
+package project;
+
 import java.util.Scanner;
 
 abstract class Friend {
@@ -14,6 +15,7 @@ abstract class Friend {
     }
 
     public abstract void showAllInfo();
+
     public abstract void showBasicInfo();
 }
 
@@ -73,14 +75,14 @@ class FriendInfoHandler {
         myFriends[numOfFriends++] = fren;
     }
 
-    void showAllData(){
+    void showAllData() {
         for (int i = 0; i < numOfFriends; i++) {
             myFriends[i].showAllInfo();
             System.out.println();
         }
     }
 
-    void showAllSimpleData(){
+    void showAllSimpleData() {
         for (int i = 0; i < numOfFriends; i++) {
             myFriends[i].showBasicInfo();
             System.out.println();
@@ -92,7 +94,7 @@ public class Contact {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         FriendInfoHandler friendInfoHandler = new FriendInfoHandler(10);
-        
+
         // Loop
         while (true) {
             String name;
@@ -126,7 +128,7 @@ public class Contact {
                     friendInfoHandler.addFriendInfo(friend);
                     System.out.println("입력 완료!");
                     break;
-                
+
                 case 2: // 대학 친구 저장
                     System.out.print("이름 : ");
                     name = scanner.next();
@@ -145,7 +147,7 @@ public class Contact {
                 case 3: // 전체출력
                     friendInfoHandler.showAllData();
                     break;
-                
+
                 case 4: // 기본정보 출력
                     friendInfoHandler.showAllSimpleData();
                     break;

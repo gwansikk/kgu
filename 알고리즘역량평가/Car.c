@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 int main() {
     int k;
     int m;
@@ -28,9 +27,4 @@ int main() {
         
         printf("%d\n", count);
     }
-    
-    
-
-
-
 }
