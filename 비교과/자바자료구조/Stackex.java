@@ -1,3 +1,5 @@
+package 비교과.자바자료구조;
+
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -5,7 +7,7 @@ public class Stackex {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Stack<Integer> stack = new Stack<Integer>();
-        
+
         int sum = 0;
         int elementNumber = scanner.nextInt();
 
@@ -19,7 +21,7 @@ public class Stackex {
                 stack.push(value);
             }
         }
-        
+
         System.out.println(sum);
         scanner.close();
     }

@@ -1,4 +1,4 @@
-package 자바자료구조;
+package 비교과.자바자료구조;
 
 public class Node {
     int value;

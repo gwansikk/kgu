@@ -1,3 +1,5 @@
+package 비교과.자바자료구조;
+
 public class Myinfo {
 
     public static void main(String[] args) {

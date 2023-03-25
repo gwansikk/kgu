@@ -1,3 +1,5 @@
+package 비교과.자바자료구조;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;

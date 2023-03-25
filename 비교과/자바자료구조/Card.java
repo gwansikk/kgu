@@ -1,3 +1,5 @@
+package 비교과.자바자료구조;
+
 import java.util.*;
 
 public class Card {

@@ -1,3 +1,5 @@
+package 비교과.자바자료구조;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
@@ -28,7 +30,7 @@ public class Snail {
             int k = Integer.parseInt(br.readLine());
             sb.append(getAnswer(list, N, V, k) + "\n");
         }
-        
+
         System.out.println(sb);
     }
 }

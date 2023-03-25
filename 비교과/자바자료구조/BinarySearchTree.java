@@ -1,4 +1,5 @@
-package 자바자료구조;
+package 비교과.자바자료구조;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,11 +23,13 @@ public class BinarySearchTree {
             if (n < this.num) {
                 if (this.left == null)
                     this.left = new Node(n);
-                else this.left.insert(n);
+                else
+                    this.left.insert(n);
             } else {
                 if (this.right == null)
                     this.right = new Node(n);
-                else this.right.insert(n);
+                else
+                    this.right.insert(n);
             }
         }
     }
@@ -36,7 +39,7 @@ public class BinarySearchTree {
 
         Node root = new Node(Integer.parseInt(br.readLine()));
         String input;
-        
+
         while (true) {
             input = br.readLine();
             if (input == null || input.equals(""))
