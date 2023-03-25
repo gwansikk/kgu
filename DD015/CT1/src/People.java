@@ -1,3 +1,5 @@
+package DD015.CT1.src;
+
 import java.util.Scanner;
 
 class People {
