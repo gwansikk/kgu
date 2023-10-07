@@ -9,4 +9,5 @@
 - [DD750](/DD750/README.md) 자바프로그래밍
 - [DD771](/DD771/README.md) 알고리듬
 - [DD812](/DD812/README.md) 지능웹설계
+- [DD824](/DD824/README.md) 블록체인플랫폼
 - [DH072](/DH072/README.md) 프로그래밍기초
